@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💖 Our Love Story 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(270deg, #f9d3f7, #ffe1e1, #d7f8ff, #f9d3f7);
+      background-size: 800% 800%;
+      animation: backgroundAnimation 30s ease infinite;
+      font-family: 'Quicksand', sans-serif;
+      position: relative;
+    }
+
+    @keyframes backgroundAnimation {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .heart-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 180px;
+      background: #ff6fa1;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      cursor: pointer;
+      animation: beat 2s infinite;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.7), 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.5s ease;
+    }
+
+    .heart-card::before,
+    .heart-card::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 180px;
+      background: #ff6fa1;
+      border-radius: 50%;
+    }
+
+    .heart-card::before {
+      top: -100px;
+      left: 0;
+    }
+
+    .heart-card::after {
+      left: 100px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1);}
+      50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);}
+    }
+
+    .click-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      font-family: 'Pacifico', cursive;
+      color: white;
+      font-size: 26px;
+      pointer-events: none;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      z-index: 5;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+      50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.1);}
+      100% { transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+    }
+
+    .heart-content {
+      position: absolute;
+      width: 600px;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      display: none;
+      font-family: 'Pacifico', cursive;
+      font-size: 22px;
+      padding: 20px;
+      z-index: 10;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .photo-collage {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .photo-collage img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .floating-image {
+      position: absolute;
+      top: 100vh;
+      opacity: 0.9;
+      animation: floatUp linear infinite;
+      border-radius: 18px;
+      pointer-events: none;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    @keyframes floatUp {
+      0% {transform: translateY(0) scale(1); opacity: 1;}
+      100% {transform: translateY(-120vh) scale(1.5); opacity: 0;}
+    }
+
+    .heart {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: #ffb6c1;
+      border-radius: 50%;
+      animation: floatUpHeart 12s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .heart::after, .heart::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: #ffb6c1;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -12px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -12px;
+      top: 0;
+    }
+
+    @keyframes floatUpHeart {
+      0% {transform: translateY(100vh) scale(1); opacity: 0.7;}
+      100% {transform: translateY(-10vh) scale(1.7); opacity: 0;}
+    }
+  </style>
+</head>
+
+<body>
+
+<audio id="bgMusic" src="https://cdn.pixabay.com/audio/2023/03/14/audio_b493b3c801.mp3" preload="auto"></audio>
+
+<div class="heart-card" onclick="openHeart()">
+  <div class="click-text" id="clickText">ClickMe!</div> <!-- NEW TEXT -->
+  <div class="heart-content" id="heartContent">
+    Every day I find a new reason to be grateful for you. Your love is the calm in my chaos, the light in my darkness, and the hope I didn’t know I was searching for.
+    You are more than my boyfriend — you are my peace, my home, and my favorite everything.
+    When I say 'I love you,' it’s not just words — it’s a promise, a prayer, and a piece of my soul I give only to you.
+    Thank you for being you, Haile💖. Thank you for choosing me, standing by me, and making even ordinary moments feel magical. I am yours — always, without hesitation, without doubt. I love you more than words will ever be able to tell.
+    
+    <div class="photo-collage">
+      <img src="https://images.unsplash.com/photo-1535615615570-3b839f4359be?q=80&w=1974&auto=format&fit=crop" alt="Photo1">
+      <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=2070&auto=format&fit=crop" alt="Photo2">
+      <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=2127&auto=format&fit=crop" alt="Photo3">
+    </div>
+  </div>
+</div>
+
+<script>
+  let isOpened = false;
+  const bgMusic = document.getElementById('bgMusic');
+
+  function openHeart() {
+    if (!isOpened) {
+      document.getElementById('heartContent').style.display = 'block';
+      document.getElementById('clickText').style.display = 'none'; // HIDE "Click Me"
+      bgMusic.play();
+      bgMusic.volume = 0.5;
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 300,
+          spread: 100,
+          origin: { y: 0.6 }
+        });
+      }, 300);
+
+      isOpened = true;
+    }
+  }
+
+  const images = [
+    '/images/photo_2025-04-28_11-13-39.jpg',
+    '/images/photo_2025-04-28_11-13-41.jpg',
+    '/images/photo_2025-04-28_11-13-44.jpg',
+    '/images/photo_2025-04-28_11-13-46.jpg',
+    '/images/photo_2025-04-28_11-13-49.jpg',
+    '/images/photo_2025-04-28_11-13-51.jpg',
+    '/images/photo_2025-04-28_11-13-53.jpg',
+  ];
+
+  function createFloatingImage() {
+    const img = document.createElement('img');
+    img.src = images[Math.floor(Math.random() * images.length)];
+    img.className = 'floating-image';
+    img.style.left = Math.random() * 100 + 'vw';
+    img.style.animationDuration = (12 + Math.random() * 5) + 's';
+    img.style.width = (50 + Math.random() * 50) + 'px';
+    document.body.appendChild(img);
+
+    setTimeout(() => {
+      img.remove();
+    }, 16000);
+  }
+
+  setInterval(createFloatingImage, 1300);
+
+  for (let i = 0; i < 40; i++) {
+    let heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (10 + Math.random() * 4) + 's';
+    document.body.appendChild(heart);
+  }
+</script>
+
+</body>
+</html>
